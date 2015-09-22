@@ -1,0 +1,42 @@
+{
+  "name": "webVisualizer",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Web Visualizer",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server",
+    "postinstall": "node server/deploy.js"
+  },
+  "author": "",
+  "private": true,
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^5.8.22",
+    "babel-loader": "^5.3.2",
+    "babel-runtime": "^5.8.20",
+    "bows": "^1.4.8",
+    "css-loader": "^0.16.0",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "jade": "^1.11.0",
+    "jade-loader": "^0.7.1",
+    "json-loader": "^0.5.2",
+    "jsx-loader": "^0.13.2",
+    "less": "^2.5.1",
+    "less-loader": "^2.2.0",
+    "lodash": "^3.10.1",
+    "node-sass": "^3.2.0",
+    "sass-loader": "^2.0.1",
+    "style-loader": "^0.12.3",
+    "superagent": "^1.3.0",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "http-proxy": "^1.11.1",
+    "processing-js": "^1.4.16",
+    "underscore": "^1.8.3"
+  }
+}
