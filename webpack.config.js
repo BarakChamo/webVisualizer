@@ -40,6 +40,12 @@ module.exports = [
         // Define module loaders
         module: {
             loaders: [
+                {   // Worker Loader
+                    test: /\.w\.jsx?$/, 
+                    exclude: /(node_modules|bower_components)/, 
+                    loader: 'webworker!babel?optional[]=runtime&stage=0'
+                },
+
                 {   // ES6 Loader
                     test: /\.jsx?$/, 
                     exclude: /(node_modules|bower_components)/, 
@@ -72,7 +78,8 @@ module.exports = [
         resolve: {
             modulesDirectories: [
                 'node_modules',
-                'resources'
+                'resources',
+                'app'
             ],
             extensions: ['', '.js', '.jsx']
         },
@@ -87,6 +94,8 @@ module.exports = [
             // Deduplication
             new webpack.optimize.DedupePlugin(),
 
+            // Chunk out vendor code
+            // new webpack.optimize.CommonsChunkPlugin('processing', 'vendor.js'),
 
             // Chunk out vendor code
             new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),

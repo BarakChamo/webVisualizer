@@ -10,7 +10,6 @@
     "postinstall": "node server/deploy.js"
   },
   "author": "",
-  "private": true,
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^5.8.22",
@@ -34,6 +33,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
+    "bluebird": "^2.10.1",
     "express": "^4.13.3",
     "http-proxy": "^1.11.1",
     "processing-js": "^1.4.16",
