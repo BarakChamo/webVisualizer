@@ -3,7 +3,7 @@ export default function RequestPromise (url, type){
       let request = new XMLHttpRequest()
 
       request.open('GET', url, true)
-      request.responseType = type ? 'arraybuffer' : ''
+      request.responseType = type ? type : ''
 
 
       request.onload = function() {
