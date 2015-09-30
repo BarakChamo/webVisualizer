@@ -1,6 +1,6 @@
 const modes = {
   'frequency':  {
-    bitLength: 2048
+    bitLength: 1024
   },
 
   'timeDomain': {

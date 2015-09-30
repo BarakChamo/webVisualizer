@@ -9,6 +9,7 @@ import Analyser from 'audio/analyser'
 
 // Visual components
 import Line from 'visuals/line'
+import Circle from 'visuals/circle'
 
 // Initialize canvas
 const canvas = document.createElement('canvas')
@@ -34,9 +35,23 @@ player.connect(beatAnalyser.getAnalyser())
 // Initialize visual components
 const freqLine = new Line()
 const timeLine = new Line({strokeStyle: 'orange'})
+const freqCircle = new Circle()
 
-freqLine.loadSample(freqAnalyser.analyse())
+let lastFreqAnalysis
+let freqAnalysis
+
+
+// Can do some interesting interpolation or maxing between previous
+// and current analysis for smoother and more informative visuals
+lastFreqAnalysis = freqAnalysis
+freqAnalysis = freqAnalyser.analyse()
+
+freqLine.loadSample(freqAnalysis)
 timeLine.loadSample(timeAnalyser.analyse())
+freqCircle.loadSample(freqAnalysis)
+
+let currentTime
+let cu
 
 function render(ts){
   // Process audio
@@ -49,9 +64,12 @@ function render(ts){
   // clear canvas
   canvasCtx.clearRect(0, 0, canvas.width, canvas.height)
 
+  currentTime = Date.now()
+
   // Draw visualization
   freqLine.draw(canvasCtx)
   timeLine.draw(canvasCtx, timeAnalyser.zeroCrossing())
+  freqCircle.draw(canvasCtx)
   requestAnimationFrame(render)
 }
 
