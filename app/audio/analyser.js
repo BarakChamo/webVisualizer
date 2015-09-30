@@ -38,7 +38,7 @@ export default class AudioAnalyser {
 
     this.fftSize = this.analyser.fftSize = modes[this.mode].bitLength
     
-    this.analyser.smoothingTimeConstant = 0.85
+    this.analyser.smoothingTimeConstant = 0.95
     this.analyser.minDecibels = minAmp
     this.analyser.maxDecibels = maxAmp
 

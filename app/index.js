@@ -39,19 +39,21 @@ const freqCircle = new Circle()
 
 let lastFreqAnalysis
 let freqAnalysis
+let timeAnalysis
 
 
-// Can do some interesting interpolation or maxing between previous
+// Can do some interesting interpolation or maxing between previous 
 // and current analysis for smoother and more informative visuals
 lastFreqAnalysis = freqAnalysis
 freqAnalysis = freqAnalyser.analyse()
+timeAnalysis = timeAnalyser.analyse()
+
 
 freqLine.loadSample(freqAnalysis)
-timeLine.loadSample(timeAnalyser.analyse())
+timeLine.loadSample(timeAnalysis)
 freqCircle.loadSample(freqAnalysis)
 
 let currentTime
-let cu
 
 function render(ts){
   // Process audio
