@@ -9,6 +9,10 @@ const modes = {
 
   'beats':      {
     bitLength: 32
+  },
+
+  'loudness':   {
+    bitLength: 32
   }
 }
 
@@ -78,7 +82,7 @@ export default class AudioAnalyser {
     this.analyser.getByteFrequencyData(data)
 
     // Calculate average level across frame
-    const level = this.data.reduce((p, c, i) => p + c, 0) / this.data.length
+    const level = this.data.reduce((p, c) => p + c, 0) / this.data.length
 
     // if BEAT!
     if (level > this.beatCutOff){
@@ -103,6 +107,21 @@ export default class AudioAnalyser {
     }
 
     return this.beatData
+  }
+
+  // Beat Detection
+  _loudness(data) {   
+    this.levelData = this.levelData || new Uint8Array(1)
+    
+    // Analyse levels
+    this.analyser.getByteFrequencyData(data)
+
+    // Calculate average level across frame
+    const level = this.data.reduce((p, c) => p + c, 0) / this.data.length
+
+    this.levelData.fill(level)
+
+    return this.levelData
   }
 
   /*
